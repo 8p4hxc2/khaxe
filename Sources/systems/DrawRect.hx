@@ -16,8 +16,8 @@ class DrawRect extends System {
 	override function render(graphic:Graphics) {
 		for(entity in entities) {
 			var transform = cast(entity.components.get("Transform"), Transform);
-			graphic.pushRotation(transform.rotation, transform.position.x, transform.position.y);
-			graphic.drawRect(transform.position.x-transform.width/2, transform.position.y-transform.height/2, transform.width, transform.height);
+			graphic.pushRotation(transform.rotation, transform.x, transform.y);
+			graphic.drawRect(transform.x-transform.width/2, transform.y-transform.height/2, transform.width, transform.height);
 			graphic.popTransformation();
 		}
 	}

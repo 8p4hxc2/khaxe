@@ -23,7 +23,7 @@ class MainMenu extends State {
 		var floor:Floor = new Floor(space);
 
 		systems.push(new MovePlayer());
-		//systems.push(new DrawSprite());
+		systems.push(new DrawSprite());
 		systems.push(new DrawRect());
 
 	for(player in lol) {

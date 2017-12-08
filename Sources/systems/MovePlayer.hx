@@ -6,7 +6,7 @@ import components.RigidBody;
 
 class MovePlayer extends System {
 	public function new() {
-		this.blueprints = ["SpriteRenderer", "Transform"];
+		this.blueprints = ["RectRenderer", "Transform"];
 	}
 
 	override function update(dt:Float) {
@@ -14,8 +14,8 @@ class MovePlayer extends System {
 			var transform:Transform = cast(entity.components.get("Transform"), Transform);
 			var rigidBody:RigidBody = cast(entity.components.get("RigidBody"), RigidBody);
 
-			transform.position.x = rigidBody.body.position.x;
-			transform.position.y = rigidBody.body.position.y;
+			transform.x = rigidBody.body.position.x;
+			transform.y = rigidBody.body.position.y;
 			transform.rotation = rigidBody.body.rotation;
 		}
 	}

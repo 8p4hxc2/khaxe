@@ -16,7 +16,7 @@ class DrawSprite extends System {
 	}
 
 	override function update(dt:Float) {
-		/*for(entity in entities) {
+		for(entity in entities) {
 			var animatedSprite:AnimatedSprite = cast(entity.components.get("AnimatedSprite"), AnimatedSprite);
 			
 			animatedSprite.lastUpdate += dt;
@@ -29,18 +29,17 @@ class DrawSprite extends System {
 
 				animatedSprite.lastUpdate = 0;
 			}
-		}*/
+		}
 	}
 
 	override function render(graphic:Graphics) {
 		for(entity in entities) {
 			var spriteRenderer=cast(entity.components.get("SpriteRenderer"), SpriteRenderer);
 			var transform=cast(entity.components.get("Transform"), Transform);
-			//var animatedSprite=cast(entity.components.get("AnimatedSprite"), AnimatedSprite);
+			var animatedSprite=cast(entity.components.get("AnimatedSprite"), AnimatedSprite);
 
-			graphic.pushRotation(transform.rotation, transform.position.x, transform.position.y);
-			//graphic.drawSubImage(spriteRenderer.texture, transform.position.x-47/2, transform.position.y-40/2, animatedSprite.currentFrame * animatedSprite.frameWidth, 0, animatedSprite.frameWidth, animatedSprite.frameHeight);
-			graphic.drawRect(transform.position.x-transform.width/2, transform.position.y-transform.height/2, transform.width, transform.height);
+			graphic.pushRotation(transform.rotation, transform.x, transform.y);
+			graphic.drawSubImage(spriteRenderer.texture, transform.x-transform.width/2, transform.y-transform.height/2, animatedSprite.currentFrame * animatedSprite.frameWidth, 0, animatedSprite.frameWidth, animatedSprite.frameHeight);
 			graphic.popTransformation();
 		}
 	}

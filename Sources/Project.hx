@@ -24,7 +24,7 @@ class Project {
 
 	public function new() {
 		Random.init(54645);
-		backbuffer = Image.createRenderTarget(800, 600);
+		backbuffer = Image.createRenderTarget(1280, 720);
 		Assets.loadEverything(loadAll);
 	}
 
