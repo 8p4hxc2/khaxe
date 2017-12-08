@@ -1,4 +1,5 @@
-var project = new Project('Blocks');
+let project = new Project('New Project');
 project.addAssets('Assets/**');
 project.addSources('Sources');
-return project;
+project.addLibrary('nape');
+resolve(project);
