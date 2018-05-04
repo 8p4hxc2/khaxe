@@ -1,34 +1,26 @@
 package states;
 
 import core.State;
-import systems.DrawSprite;
-import systems.DrawRect;
+import systems.draw.Text;
 import systems.MovePlayer;
-import entities.Player;
-import entities.Floor;
-import nape.space.Space;
-import kha.math.Random;
+import systems.draw.AnimatedSprite;
+import systems.onOver.TextColor;
+import entities.MenuEntry;
 
 class MainMenu extends State {
-	public function new(space:Space) {
-		var lol:Array<Player> = [];
-
-		for(i in 0...100) {
-			lol.push(new Player(space,Random.getUpTo(800),Random.getUpTo(600)));		
-		}
-/*		var player:Player = new Player(space, 110, 10);
-		var player2:Player = new Player(space);
-		var player3:Player = new Player(space);
-		var player4:Player = new Player(space);*/
-		var floor:Floor = new Floor(space);
-
+	public function new() {
 		systems.push(new MovePlayer());
-		systems.push(new DrawSprite());
-		systems.push(new DrawRect());
+		systems.push(new DrawText());
+		systems.push(new TextColor());
+		//systems.push(new DrawSprite());
+		systems.push(new DrawAnimatedSprite());
 
-	for(player in lol) {
-		register(player);
+		register(new MenuEntry('item 1', 400, 400));
+		register(new MenuEntry('item 2', 400, 500));
+		register(new MenuEntry('item 3', 400, 600));
 	}
-		register(floor);
+
+	override function update(dt:Float) {
+		super.update(dt);
 	}
 }

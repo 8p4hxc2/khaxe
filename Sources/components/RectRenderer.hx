@@ -1,11 +1,11 @@
 package components;
 
-import kha.Assets;
-import kha.Image;
 import core.Component;
 
-class RectRenderer extends Component
-{
-	public function new() {
+class RectRenderer extends Component {
+	public var color:Int;
+
+	public function new(_color:Int = 0xffffffff) {
+		color = _color;
 	}
 }

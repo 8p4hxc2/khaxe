@@ -1,6 +1,7 @@
 package core;
 
 import kha.graphics2.Graphics;
+import kha.input.KeyCode;
 
 class State {
 	var systems:Array<System> = [];
@@ -13,9 +14,9 @@ class State {
 	}
 
 	public function update(dt:Float) {
-		/*if(test[KeyCode.Return]) {
+		if(Controller.keyboard.isDown(KeyCode.P)) {
 			paused = true;
-		}*/
+		}
 
 		if(!paused) {
 			for(s in systems) {

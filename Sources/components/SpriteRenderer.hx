@@ -4,8 +4,7 @@ import kha.Assets;
 import kha.Image;
 import core.Component;
 
-class SpriteRenderer extends Component
-{
+class SpriteRenderer extends Component {
 	public var texture:Image;
 
 	public function new() {

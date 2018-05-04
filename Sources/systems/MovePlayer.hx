@@ -6,7 +6,7 @@ import components.RigidBody;
 
 class MovePlayer extends System {
 	public function new() {
-		this.blueprints = ["RectRenderer", "Transform"];
+		this.blueprints = ["RigidBody", "Transform"];
 	}
 
 	override function update(dt:Float) {

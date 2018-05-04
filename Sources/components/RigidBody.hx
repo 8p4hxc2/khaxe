@@ -6,8 +6,7 @@ import nape.phys.BodyType;
 import nape.shape.Polygon;
 import nape.space.Space;
 
-class RigidBody extends Component
-{
+class RigidBody extends Component {
 	public var body:Body;
 
 	public function new(space:Space, x:Float, y:Float, width:Float, height:Float, ?bodyType:BodyType) {

@@ -5,22 +5,19 @@ import kha.Scheduler;
 import kha.System;
 import kha.Image;
 import kha.Assets;
-//import kha.input.Keyboard;
+import kha.math.Random;
+import kha.Scaler;
+import kha.input.Keyboard;
+import kha.input.Mouse;
 import states.MainMenu;
 import core.State;
-import kha.math.Random;
-import kha.input.Keyboard;
-import kha.input.KeyCode;
-import kha.Scaler;
-import nape.space.Space;
-import nape.geom.Vec2;
+import core.Controller;
+import core.Physic;
 
 class Project {
 	var states:Array<State> = [];
-	var test:Map<KeyCode,Bool>=new Map();
 	var lastUpdate = Scheduler.time();
 	var backbuffer:Image;
-	var space:Space;
 
 	public function new() {
 		Random.init(54645);
@@ -29,28 +26,18 @@ class Project {
 	}
 
 	function loadAll() : Void {
-		var gravity = Vec2.weak(0, 600);
-        space = new Space(gravity);
-		
-		states.push(new MainMenu(space));
+		Keyboard.get().notify(Controller.keyboard.keyDown, Controller.keyboard.keyUp);
+		Mouse.get().notify(Controller.keyboard.onMouseDown, Controller.keyboard.onMouseUp, Controller.keyboard.onMouseMove, null);
 
-		Keyboard.get().notify(keyDown, keyUp);
+		states.push(new MainMenu());
 		System.notifyOnRender(render);
 		Scheduler.addTimeTask(update, 0, 1 / 60);
-	}
-
-	function keyDown(key:KeyCode) : Void {
-		test.set(key, true);
-	}
-
-	function keyUp(key:KeyCode) : Void {
-		test.set(key, false);
 	}
 
 	function update(): Void {
 		var dt = Scheduler.time() - lastUpdate;
 
-		space.step(1 / 60);
+		Physic.universe.update();
 
 		for(state in states) {
 			state.update(dt);
